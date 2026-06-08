@@ -1,0 +1,26 @@
+OriBridge — Odia Unicode → AkrutiOriSarala-99 converter
+Copyright (C) 2026 OriBridge contributors
+
+This program is free software: you can redistribute it and/or modify it under
+the terms of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any later
+version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY
+WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with
+this program. If not, see <https://www.gnu.org/licenses/gpl-3.0.html>.
+
+----------------------------------------------------------------------------
+ATTRIBUTION
+The conversion mapping foundation is adapted and inverted from the GPL-3.0
+licensed project "OdiaWikimedia/Converter"
+(https://github.com/OdiaWikimedia/Converter) by Manoj Sahukar and
+Subhashish Panigrahi, and validated/corrected for the AkrutiOriSarala-99
+variant against a supplied parallel corpus. Because OriBridge is a derivative
+work of that GPL-3.0 mapping, it is likewise distributed under GPL-3.0.
+
+The full GPL-3.0 license text is available at the URL above; include it as this
+file's contents for a formal redistribution.

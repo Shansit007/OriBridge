@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Convert Odia Unicode (Nirmala UI) text to AkrutiOriSarala-99 encoding for Adobe PageMaker 7.0. Works offline, no login, no backend." />
+  <title>OriBridge — Odia Unicode → AkrutiOriSarala-99 Converter</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <h1 class="brand">Ori<span>Bridge</span></h1>
+      <p class="tagline">Odia Unicode (Nirmala UI) → <strong>AkrutiOriSarala-99</strong> for Adobe PageMaker 7.0</p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="panes">
+      <div class="pane">
+        <div class="pane-head">
+          <label for="input">Unicode Odia input</label>
+          <span id="inCount" class="count">0 chars</span>
+        </div>
+        <textarea id="input" spellcheck="false" autocomplete="off"
+          placeholder="ଏଠାରେ ୟୁନିକୋଡ୍ ଓଡ଼ିଆ ଲେଖା ପେଷ୍ଟ କରନ୍ତୁ…  (Paste Unicode Odia text here)"></textarea>
+      </div>
+
+      <div class="pane">
+        <div class="pane-head">
+          <label for="output">AkrutiOriSarala-99 output</label>
+          <span id="outCount" class="count">0 chars</span>
+        </div>
+        <textarea id="output" spellcheck="false" autocomplete="off" readonly
+          placeholder="Converted Akruti code appears here. Copy it, paste into PageMaker, and apply the AkrutiOriSarala-99 font."></textarea>
+      </div>
+    </section>
+
+    <section class="controls">
+      <button id="btnConvert" class="btn btn-primary" type="button" title="Convert (Ctrl/Cmd + Enter)">Convert →</button>
+      <button id="btnCopy" class="btn" type="button">Copy Output</button>
+      <button id="btnClear" class="btn btn-ghost" type="button">Clear</button>
+      <label class="live"><input type="checkbox" id="liveToggle" /> Live convert</label>
+      <span id="status" class="status" role="status" aria-live="polite"></span>
+    </section>
+
+    <section class="how">
+      <h2>How to use in PageMaker</h2>
+      <ol>
+        <li>Type / paste your Unicode Odia (from MS Word, Nirmala UI, web, etc.) into the left box.</li>
+        <li>Click <strong>Convert</strong>, then <strong>Copy Output</strong>.</li>
+        <li>In Adobe PageMaker 7.0, paste the copied text into a text frame.</li>
+        <li>Select the pasted text and apply the <strong>AkrutiOriSarala-99</strong> font.</li>
+      </ol>
+      <p class="note">100% offline · no login · no backend · your text never leaves this page.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>OriBridge v1.0 · Conversion mapping validated against a real -99 newspaper corpus.
+      Mapping foundation adapted from the GPL-3.0 <a href="https://github.com/OdiaWikimedia/Converter" target="_blank" rel="noopener">OdiaWikimedia/Converter</a> (Manoj Sahukar &amp; Subhashish Panigrahi).</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
