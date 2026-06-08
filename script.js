@@ -29,7 +29,7 @@
     'ପ':'_','ଫ':'`','ବ':'a','ଭ':'b','ମ':'c',
     'ଯ':'~','ର':'e','ଲ':'f','ଳ':'k','ଶ':'g',
     'ଷ':'h','ସ':'i','ହ':'j','ଵ':'a','ୟ':'d',
-    'ଡ଼':'Wÿ','ଢ଼':'Xÿ','ୱ':'Iß'
+    'ଡ଼':'Wÿ','ଢ଼':'Xÿ','ୱ':'Iß'
   };
 
   // Right-side (post-base) matras
@@ -105,6 +105,12 @@
   function convert(text) {
     if (!text) return '';
     text = text.normalize ? text.normalize('NFC') : text;
+    // Odia Da/Dha-nukta (U+0B5C/U+0B5D) are NFC composition-exclusions, so
+    // they arrive decomposed as base + U+0B3C. Recompose to the single
+    // codepoints our consonant map uses; drop any other stray nukta.
+    text = text.replace(/\u0B21\u0B3C/g, '\u0B5C')
+               .replace(/\u0B22\u0B3C/g, '\u0B5D')
+               .replace(/\u0B3C/g, '');
     var out = [], i = 0, n = text.length;
 
     while (i < n) {
@@ -170,7 +176,7 @@
     return out.join('');
   }
 
-  var api = { convert: convert, version: '1.0.0' };
+  var api = { convert: convert, version: '1.0.1' };
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
   root.OriBridge = api;
 
