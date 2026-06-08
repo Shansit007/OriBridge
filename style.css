@@ -1,6 +1,7 @@
 /* OriBridge — production stylesheet. No external assets; works fully offline. */
 :root {
-  --bg: #0f1720;
+  --bg-grad-a: #0d141c;
+  --bg-grad-b: #0f1720;
   --panel: #18222e;
   --panel-2: #1f2c3a;
   --line: #2c3a4a;
@@ -10,23 +11,59 @@
   --accent-2: #1d8bbf;
   --ok: #3ecf8e;
   --err: #ff6b6b;
+  --bar: #0c1219;      /* header / footer background */
+  --output-bg: #131c26;
+  --btn-hover: #28384a;
   --radius: 10px;
   --mono: "Consolas", "Menlo", "DejaVu Sans Mono", monospace;
   --sans: "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
 }
 
+/* Light theme — overrides the custom properties above */
+html.light {
+  --bg-grad-a: #eef2f7;
+  --bg-grad-b: #f6f8fb;
+  --panel: #ffffff;
+  --panel-2: #eef2f6;
+  --line: #d7dee6;
+  --text: #16212c;
+  --muted: #5b6b7a;
+  --accent: #1d8bbf;
+  --accent-2: #14729e;
+  --ok: #1f9d63;
+  --err: #d6455d;
+  --bar: #ffffff;
+  --output-bg: #f7fafc;
+  --btn-hover: #e3eaf1;
+}
+
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
 body {
-  background: linear-gradient(180deg, #0d141c, #0f1720 40%);
+  background: linear-gradient(180deg, var(--bg-grad-a), var(--bg-grad-b) 40%);
   color: var(--text);
   font-family: var(--sans);
   line-height: 1.5;
   min-height: 100vh;
+  transition: background .2s ease, color .2s ease;
 }
 .wrap { width: 100%; max-width: 1180px; margin: 0 auto; padding: 0 20px; }
 
-.site-header { padding: 26px 0 18px; border-bottom: 1px solid var(--line); background: #0c1219; }
+.site-header { position: relative; padding: 26px 0 18px; border-bottom: 1px solid var(--line); background: var(--bar); transition: background .2s ease; }
+.site-header .wrap { position: relative; }
+.theme-toggle {
+  position: absolute; top: 0; right: 20px;
+  display: inline-flex; align-items: center; gap: 7px;
+  border: 1px solid var(--line); background: var(--panel-2); color: var(--text);
+  padding: 7px 12px; border-radius: 999px; font-size: 13px; font-weight: 600;
+  cursor: pointer; transition: background .15s, border-color .15s;
+}
+.theme-toggle:hover { background: var(--btn-hover); border-color: var(--accent-2); }
+.theme-toggle-icon { width: 14px; height: 14px; border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #ffd86b 0 45%, #f0a500 46% 100%);
+  box-shadow: 0 0 0 2px rgba(240,165,0,.25); }
+html.light .theme-toggle-icon { background: #3a4654;
+  box-shadow: inset -3px -2px 0 0 var(--panel); }
 .brand { margin: 0; font-size: 30px; font-weight: 800; letter-spacing: .3px; }
 .brand span { color: var(--accent); }
 .tagline { margin: 4px 0 0; color: var(--muted); font-size: 15px; }
@@ -46,7 +83,7 @@ textarea {
   background: transparent; color: var(--text);
   font-family: var(--mono); font-size: 16px; line-height: 1.7;
 }
-#output { color: #d7e6f2; background: #131c26; }
+#output { background: var(--output-bg); }
 textarea::placeholder { color: #5e7184; }
 
 .controls { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 16px; }
@@ -55,7 +92,7 @@ textarea::placeholder { color: #5e7184; }
   color: var(--text); padding: 11px 18px; border-radius: 8px; font-size: 15px;
   font-weight: 600; cursor: pointer; transition: background .15s, border-color .15s, transform .05s;
 }
-.btn:hover { background: #28384a; border-color: var(--accent-2); }
+.btn:hover { background: var(--btn-hover); border-color: var(--accent-2); }
 .btn:active { transform: translateY(1px); }
 .btn-primary { background: var(--accent); border-color: var(--accent); color: #062330; }
 .btn-primary:hover { background: var(--accent-2); border-color: var(--accent-2); }
@@ -74,7 +111,7 @@ textarea::placeholder { color: #5e7184; }
 .how ol strong { color: var(--text); }
 .note { margin: 12px 0 0; color: var(--ok); font-size: 13px; }
 
-.site-footer { border-top: 1px solid var(--line); background: #0c1219; padding: 16px 0; }
+.site-footer { border-top: 1px solid var(--line); background: var(--bar); padding: 16px 0; transition: background .2s ease; }
 .site-footer p { margin: 0; color: var(--muted); font-size: 12.5px; }
 .site-footer a { color: var(--accent); text-decoration: none; }
 .site-footer a:hover { text-decoration: underline; }

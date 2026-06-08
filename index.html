@@ -6,10 +6,24 @@
   <meta name="description" content="Convert Odia Unicode (Nirmala UI) text to AkrutiOriSarala-99 encoding for Adobe PageMaker 7.0. Works offline, no login, no backend." />
   <title>OriBridge — Odia Unicode → AkrutiOriSarala-99 Converter</title>
   <link rel="stylesheet" href="style.css" />
+  <script>
+    // Apply saved/system theme before paint to avoid a flash of the wrong theme
+    (function () {
+      try {
+        var t = localStorage.getItem('oribridge-theme');
+        if (!t) t = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        if (t === 'light') document.documentElement.classList.add('light');
+      } catch (e) {}
+    })();
+  </script>
 </head>
 <body>
   <header class="site-header">
     <div class="wrap">
+      <button id="themeToggle" class="theme-toggle" type="button" aria-label="Toggle light or dark theme">
+        <span class="theme-toggle-icon" aria-hidden="true"></span>
+        <span class="theme-toggle-label">Light</span>
+      </button>
       <h1 class="brand">Ori<span>Bridge</span></h1>
       <p class="tagline">Odia Unicode (Nirmala UI) → <strong>AkrutiOriSarala-99</strong> for Adobe PageMaker 7.0</p>
     </div>

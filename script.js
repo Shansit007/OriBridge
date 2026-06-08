@@ -176,7 +176,7 @@
     return out.join('');
   }
 
-  var api = { convert: convert, version: '1.0.1' };
+  var api = { convert: convert, version: '1.1.0' };
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
   root.OriBridge = api;
 
@@ -198,6 +198,24 @@
     var status = document.getElementById('status');
     var inCount = document.getElementById('inCount');
     var outCount = document.getElementById('outCount');
+    var themeToggle = document.getElementById('themeToggle');
+
+    // ----- light / dark theme -----
+    function syncThemeLabel() {
+      if (!themeToggle) return;
+      var isLight = document.documentElement.classList.contains('light');
+      var label = themeToggle.querySelector('.theme-toggle-label');
+      if (label) label.textContent = isLight ? 'Dark' : 'Light';
+      themeToggle.setAttribute('aria-pressed', isLight ? 'true' : 'false');
+    }
+    if (themeToggle) {
+      syncThemeLabel();
+      themeToggle.addEventListener('click', function () {
+        var isLight = document.documentElement.classList.toggle('light');
+        try { localStorage.setItem('oribridge-theme', isLight ? 'light' : 'dark'); } catch (e) {}
+        syncThemeLabel();
+      });
+    }
 
     function flash(msg, kind) {
       status.textContent = msg;
